@@ -1,2 +1,2 @@
-# digital-clock
-digital clock with js
+# digital-timer
+digital timer with js
