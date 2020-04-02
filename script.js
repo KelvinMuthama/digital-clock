@@ -1,19 +1,23 @@
 start.onclick = function timeFunc() {
-  let seconds = 1;
+  let seconds = 0;
   let minutes = 0;
   let hours = 0;
 
   let timer = setTimeout(function increase() {
-    let sec = "0" + seconds;
+    seconds++;
     if (seconds < 10) {
+      let sec = "0" + seconds;
       document.getElementById("second").innerHTML = sec;
     } else {
       document.getElementById("second").innerHTML = seconds;
     }
 
+
     timer = setTimeout(increase, 1000);
-    seconds++;
-    if (seconds === 60) {
+
+
+    if (seconds > 59) {
+      document.getElementById("second").innerHTML = "00"
       minutes++;
       if (minutes < 10) {
         document.getElementById("minute").innerHTML = "0" + minutes;
@@ -24,7 +28,8 @@ start.onclick = function timeFunc() {
       seconds = 0;
     }
 
-    if (minutes === 60) {
+    if (minutes > 59) {
+      document.getElementById("minute").innerHTML = "00"
       hours++;
       if (hours < 10) {
         document.getElementById("hour").innerHTML = "0" + hours;
@@ -39,14 +44,14 @@ start.onclick = function timeFunc() {
     // stop button
     let stop = document.getElementById("stop");
 
-    stop.addEventListener("click", function() {
+    stop.addEventListener("click", function () {
       clearTimeout(timer);
       stop.style.pointerEvents = "none";
     });
 
     // reset button
     let reset = document.getElementById("reset");
-    reset.addEventListener("click", function() {
+    reset.addEventListener("click", function () {
       clearTimeout(timer);
       document.getElementById("second").innerHTML = "00";
       document.getElementById("minute").innerHTML = "00";
